@@ -1,11 +1,10 @@
 /**
- * Descriptions：
+ * Descriptions：Navigator组件的使用
  * <p>
  * Author：ChenME
  * Date：2016/11/13
  * Email：ibelieve1210@163.com
  */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
