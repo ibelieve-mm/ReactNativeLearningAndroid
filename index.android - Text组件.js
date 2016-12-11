@@ -22,16 +22,16 @@ export default class ReactNativeLearningAndroid extends Component {
         return (
             <View>
                 <Header/>
-                <List title="新闻1"></List>
-                <List title="新闻2"></List>
-                <List title="新闻3"></List>
+                <List title="新闻1"/>
+                <List title="新闻2"/>
+                <List title="新闻3"/>
 
                 <ImportantNews news={[
                     '解放军收复钓鱼岛，世界人民承认钓鱼岛主权属于中国',
                     'R本为二战在中国制造的惨案向中国人民致歉',
                     '历经多年的漂泊，台湾终于回归大陆',
                     'A国宣布正式附属于中国，正式成为中国的一个藩国，并决定每年向中国缴纳各项财政收入的30%，该条款自今年9月12日开始实施。'
-                ]}></ImportantNews>
+                ]}/>
             </View>
         );
     }
