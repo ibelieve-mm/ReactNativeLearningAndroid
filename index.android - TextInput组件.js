@@ -1,8 +1,8 @@
 /**
- * Descriptions：Navigator组件的使用
+ * Descriptions：TextInput组件的使用
  * <p>
  * Author：ChenME
- * Date：2016/11/13
+ * Date：2016/12/11
  * Email：ibelieve1210@163.com
  */
 import React, {Component} from 'react';
@@ -11,144 +11,167 @@ import {
     StyleSheet,
     Text,
     View,
-    PixeRatio,
-    Navigator,
-    ScrollView
+    TextInput,
+    PixelRatio
 } from 'react-native';
+
+var onePT = 1 / PixelRatio.get();
 
 export default class ReactNativeLearningAndroid extends Component {
 
     render() {
-
-        let defaultName = "List";
-        let defaultComponent = List;
-
         return (
-            <Navigator
-                //初始化路由
-                initialRoute={{name: defaultName, component: defaultComponent}}
+            <View style={styles.page}>
+                <View style={[styles.flex, styles.topState]}>
+                    <Search />
 
-                configureScene={
-                    route=> {
-                        return Navigator.SceneConfigs.FloatFromBottomAndroid;
-                    }
-                }
-
-                renderScene={
-                    (route, navigator)=> {
-                        let Component = route.component;
-                        return <Component{...route.params} navigator={navigator}/>
-                    }
-                }
-            />
-
-        );
-    }
-}
-
-class List extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            id: 2,
-            user: null
-        };
-    }
-
-    _pressButton() {
-        const {navigator}=this.props;
-        if (navigator) {
-            navigator.push({
-                name: 'Detail',
-                component: Detail,
-                params: {
-                    id: this.state.id,
-                    getUser: user=> {
-                        this.setState({
-                                user: user
-                            }
-                        );
-                    }
-                }
-            });
-        }
-    }
-
-    render() {
-
-        if (this.state.user) {
-            return (
-                <View>
-                    <Text style={styles.list_item}>用户信息：{JSON.stringify(this.state.user)}</Text>
                 </View>
-            );
-        } else {
-            return (
-                <ScrollView style={styles.flex}>
-                    <Text style={styles.list_item} onPress={this._pressButton.bind(this)}>豪华游轮济州岛3日游</Text>
-                    <Text style={styles.list_item} onPress={this._pressButton.bind(this)}>豪华游轮日本3日游</Text>
-                    <Text style={styles.list_item} onPress={this._pressButton.bind(this)}>豪华游轮马来西亚3日游</Text>
-                </ScrollView>
-            );
-        }
+            </View>
+        );
     }
 }
 
-const USER_MODELS = {
-    1: {name: "上官婉儿", age: 25},
-    2: {name: "独孤求败", age: 45}
-}
+class Search extends Component {
 
-class Detail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: null
+            show: false,
+            value: null,
         };
     }
 
-    _pressButton() {
-        const {navigator}=this.props;
-        if (this.props.getUser) {
-            let user = USER_MODELS[this.props.id];
-            this.props.getUser(user);
-        }
+    hide(val) {
+        this.setState({
+                show: false,
+                value: val,
+            }
+        );
+    }
 
-        if (navigator) {
-            navigator.pop();
-        }
+    getValue(text) {
+        this.setState({
+            show: text.length>0,
+            value: text,
+        });
     }
 
     render() {
         return (
-            <ScrollView>
-                <Text style={styles.list_item}>用户传递过来的id是：{this.state.id}</Text>
-                <Text style={styles.list_item} onPress={this._pressButton.bind(this)}>返回</Text>
-            </ScrollView>
-        );
-    }
 
-    componentDidMount() {
-        this.setState({
-            id: this.props.id
-        });
+            <View style={[styles.flex, styles.flexDirectionColumn]}>
+                <View style={styles.flexDirection}>
+                    <View style={[styles.flex, styles.input]}>
+                        <TextInput
+                            returnKeyType='search'
+                            returnKeyLabel='搜索'
+                            placeholder='请输入搜索内容'
+                            placeholderTextColor='#999'
+                            multiline={false}
+                            numberOfLines={2}
+                            autoFocus={true}
+                            accessibilityLabel="I am the accessibility label for text input"
+                            keyboardType='default'
+                            editable={true}
+                            maxLength={40}
+                            defaultValue='我是默认值'
+                            underlineColorAndroid='transparent'
+
+                            value={this.state.value}
+                            onChangeText={this.getValue.bind(this)}
+                        />
+                    </View>
+                    <View style={styles.btn}>
+                        <Text style={styles.search}>搜索</Text>
+                    </View>
+                </View>
+
+                {this.state.show ?
+                    <View style={styles.result}>
+                        <Text onPress={this.hide.bind(this, this.state.value + '加东方QQ')}
+                              style={styles.item} numberOfLines={1}>{this.state.value}加东方QQ</Text>
+                        <Text onPress={this.hide.bind(this, this.state.value + '园街')}
+                              style={styles.item} numberOfLines={1}>{this.state.value}园街</Text>
+                        <Text onPress={this.hide.bind(this, 80 + this.state.value + '综合商店')}
+                              style={styles.item} numberOfLines={1}>80{this.state.value}综合商店</Text>
+                        <Text onPress={this.hide.bind(this, this.state.value + '桃')}
+                              style={styles.item} numberOfLines={1}>{this.state.value}桃</Text>
+                        <Text onPress={this.hide.bind(this, '东方耀' + this.state.value)}
+                              style={styles.item} numberOfLines={1}>东方耀{this.state.value}</Text>
+                    </View>
+                    : null
+                }
+            </View>
+        );
     }
 }
 
 const styles = StyleSheet.create({
-    flex: {
-        flex: 1
+    page: {
+        flex: 1,
+        backgroundColor: '#ddd'
     },
 
-    list_item: {
-        height: 40,
+    flex: {
+        flex: 1,
+    },
+
+    flexDirection: {
+        flexDirection: 'row',
+    },
+
+    flexDirectionColumn: {
+        flexDirection: 'column',
+    },
+
+    topState: {
+        marginTop: 25,
+    },
+
+    input: {
+        height: 50,
+        borderColor: '#FF639B',
+        borderWidth: 1,
         marginLeft: 10,
+        paddingLeft: 10,
+        justifyContent: 'center',
+        borderTopLeftRadius: 8,
+        borderBottomLeftRadius: 8
+    },
+
+    btn: {
+        width: 45,
+        marginLeft: -2,
         marginRight: 10,
-        fontSize: 20,
-        borderBottomWidth: 1,
-        borderBottomColor: '#ddd',
-        justifyContent: 'center'
-    }
+        backgroundColor: '#FF639B',
+        borderTopRightRadius: 8,
+        borderBottomRightRadius: 8,
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+
+    search: {
+        color: '#FFF',
+        fontSize: 15,
+        fontWeight: 'bold',
+    },
+
+    result: {
+        marginTop: onePT,
+        marginLeft: 18,
+        marginRight: 5,
+        height: 200,
+
+    },
+
+    item: {
+        fontSize: 16,
+        paddingTop: 5,
+        paddingBottom: 10,
+    },
+
+
 });
 
 AppRegistry.registerComponent('ReactNativeLearningAndroid', () => ReactNativeLearningAndroid);
