@@ -48,7 +48,6 @@ export default class ReactNativeLearningAndroid extends Component {
             </View>
         );
     }
-
 }
 
 
@@ -65,39 +64,6 @@ const styles = StyleSheet.create({
     topState: {
         marginTop: 25,
     },
-
-    // btn: {
-    //     width: 100,
-    //     height: 30,
-    //     borderColor: '#0089FF',
-    //     borderWidth: 1,
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    //     borderRadius: 3,
-    // },
-    //
-    // btns: {
-    //     flexDirection: 'row',
-    //     marginTop: 20,
-    //     justifyContent: 'center',
-    // },
-    //
-    // img: {
-    //     width: 300,
-    //     height: 200,
-    //     borderRadius: 8,
-    // },
-    //
-    //
-    // image: {
-    //     borderWidth: 1,
-    //     width: 302,
-    //     height: 202,
-    //     borderRadius: 8,
-    //     borderColor: '#ccc',
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    // },
 });
 
 AppRegistry.registerComponent('ReactNativeLearningAndroid', () => ReactNativeLearningAndroid);
