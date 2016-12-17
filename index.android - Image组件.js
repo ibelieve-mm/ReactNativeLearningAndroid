@@ -1,5 +1,5 @@
 /**
- * Descriptions：TextInput组件的使用
+ * Descriptions：Image组件的使用
  * <p>
  * Author：ChenME
  * Date：2016/12/11
