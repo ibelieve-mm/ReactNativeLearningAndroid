@@ -11,77 +11,120 @@ import {
     StyleSheet,
     Text,
     View,
-    TextInput
+    Navigator,
+    Image,
+    ScrollView,
 } from 'react-native';
 
+import CommonItemView from "./app/code/components/CommonItemView.js";
+import ImageDemo from "./app/code/pages/Image_DemoUI.js";
+import TextInputDemo from "./app/code/pages/TextInput_DemoUI.js";
+import TouchableDemo from "./app/code/pages/Touchable_DemoUI.js";
+import BoxModel from "./app/code/pages/BoxModelDemoPage.js";
+import TextDemo from "./app/code/pages/Text_DemoUI.js";
+import ViewDemo from "./app/code/pages/View_DemoUI.js";
+
+
 export default class ReactNativeLearningAndroid extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {}
+    }
 
     render() {
+        let defaultName = "WelcomeUI";
+        let defaultComponent = WelcomeUI;
         return (
-            <View style={[styles.flex, styles.topState]}>
-                <Search />
-
-            </View>
+            <Navigator
+                initialRoute={{name: defaultName, component: defaultComponent}}
+                //配置场景
+                configureScene={
+                    route => {
+                        //这个是页面之间跳转时候的动画，具体有哪些？可以看这个目录下，有源代码的: node_modules/react-native/Libraries/CustomComponents/Navigator/NavigatorSceneConfigs.js
+                        return Navigator.SceneConfigs.FloatFromRight;
+                    }
+                }
+                renderScene={
+                    (route, navigator) => {
+                        let Component = route.component;
+                        return <Component {...route.params} navigator={navigator}/>
+                    }
+                }/>
         );
     }
 }
 
-class Search extends Component {
+class WelcomeUI extends Component {
+
+    _toTextInputUIPage = ()=> {
+        this._toNextPage("TextInputDemo", TextInputDemo);
+    };
+    _toImageUIPage = ()=> {
+        this._toNextPage("ImageDemo", ImageDemo);
+    };
+    _toTouchableUIPage = ()=> {
+        this._toNextPage("TouchableDemo", TouchableDemo);
+    };
+    _toBoxModelPage = ()=> {
+        this._toNextPage("BoxModel", BoxModel);
+    };
+    _toTextDemoPage = ()=> {
+        this._toNextPage("TextDemo", TextDemo);
+    };
+    _toViewDemoPage = ()=> {
+        this._toNextPage("ViewDemo", ViewDemo);
+    };
+
+    _toNextPage = (name, component)=> {
+        const {navigator} =this.props;
+        if (navigator) {
+            navigator.push({
+                name: name,
+                component: component,
+            });
+        }
+    };
+
     render() {
         return (
-            <View style={[styles.flex, styles.flexDirection]}>
-                <View style={[styles.flex, styles.input]}>
-                    <TextInput returnKeyType='search' returnKeyLabel='搜索'/>
-                </View>
-                <View style={styles.btn}>
-                    <Text style={styles.search}>搜索</Text>
-                </View>
+            <View style={styles.page}>
+                <ScrollView style={[styles.flex, styles.topState]}>
+                    <CommonItemView itemContentText="TextInput组件Demo"
+                                    itemClickAction={this._toTextInputUIPage}/>
+
+                    <CommonItemView itemContentText="Image组件Demo"
+                                    itemClickAction={this._toImageUIPage}/>
+
+                    <CommonItemView itemContentText="Touchable组件Demo"
+                                    itemClickAction={this._toTouchableUIPage}/>
+
+                    <CommonItemView itemContentText="盒子模型展示"
+                                    itemClickAction={this._toBoxModelPage}/>
+
+                    <CommonItemView itemContentText="Text组件Demo"
+                                    itemClickAction={this._toTextDemoPage}/>
+
+                    <CommonItemView itemContentText="View组件Demo"
+                                    itemClickAction={this._toViewDemoPage}/>
+
+                </ScrollView>
             </View>
         );
-    }
+    };
 }
+
 
 const styles = StyleSheet.create({
+    page: {
+        flex: 1,
+        backgroundColor: '#ddd'
+    },
     flex: {
         flex: 1,
     },
-
-    flexDirection: {
-        flexDirection: 'row',
-    },
-
     topState: {
         marginTop: 25,
     },
-
-    input: {
-        height: 50,
-        borderColor: '#ff639b',
-        borderWidth: 1,
-        marginLeft: 10,
-        paddingLeft: 10,
-        justifyContent: 'center',
-        borderTopLeftRadius: 8,
-        borderBottomLeftRadius: 8
-    },
-
-    btn: {
-        width: 45,
-        marginLeft: -2,
-        marginRight: 10,
-        backgroundColor: '#23BEFF',
-        borderTopRightRadius: 8,
-        borderBottomRightRadius: 8,
-        height: 50,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-
-    search: {
-        color: '#FFF',
-        fontSize: 15,
-        fontWeight: 'bold',
-    }
 });
 
 AppRegistry.registerComponent('ReactNativeLearningAndroid', () => ReactNativeLearningAndroid);
