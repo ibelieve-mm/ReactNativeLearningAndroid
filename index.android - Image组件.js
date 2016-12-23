@@ -1,5 +1,5 @@
 /**
- * Descriptions：TextInput组件的使用
+ * Descriptions：Image组件的使用
  * <p>
  * Author：ChenME
  * Date：2016/12/11
@@ -57,7 +57,8 @@ class MyImage extends Component {
                 <View style={styles.image}>
                     <Image style={styles.img}
                            resizeMode='cover'
-                           source={{uri: this.state.imgs[this.state.count]}}/>
+                           source={require('./src/imgs/pet3.png')}/>
+                    {/*source={{uri: this.state.imgs[this.state.count]}}/>*/}
                 </View>
 
                 <View style={styles.btns}>
@@ -95,7 +96,7 @@ class MyImage extends Component {
 
     goNext() {
         var count = this.state.count;
-        if (count < this.state.imgs.length-1) {
+        if (count < this.state.imgs.length - 1) {
             count++;
             this.setState({
                 count: count
@@ -134,11 +135,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 
-
     img: {
         width: 300,
         height: 200,
-        borderRadius:8,
+        borderRadius: 8,
     },
 
 
