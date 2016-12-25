@@ -23,6 +23,10 @@ import TouchableDemo from "./app/code/pages/Touchable_DemoUI.js";
 import BoxModel from "./app/code/pages/BoxModelDemoPage.js";
 import TextDemo from "./app/code/pages/Text_DemoUI.js";
 import ViewDemo from "./app/code/pages/View_DemoUI.js";
+import DrawerLayoutAndroidDemo from "./app/code/pages/DrawerLayoutAndroid_DemoUI.js";
+import PickerDemo from "./app/code/pages/Picker_DemoUI.js";
+import ProgressBarDemo from "./app/code/pages/ProgressBar_DemoUI.js";
+import ViewPagerAndroidDemo from "./app/code/pages/ViewPagerAndroid_DemoUI.js";
 
 
 export default class ReactNativeLearningAndroid extends Component {
@@ -74,6 +78,18 @@ class WelcomeUI extends Component {
     _toViewDemoPage = ()=> {
         this._toNextPage("ViewDemo", ViewDemo);
     };
+    _toDrawerLayoutAndroidDemoPage = ()=> {
+        this._toNextPage("DrawerLayoutAndroidDemo", DrawerLayoutAndroidDemo);
+    };
+    _toPickerDemoPage = ()=> {
+        this._toNextPage("PickerDemo", PickerDemo);
+    };
+    _toProgressBarDemoPage = ()=> {
+        this._toNextPage("ProgressBarDemo", ProgressBarDemo);
+    };
+    _toViewPagerAndroidDemoPage = ()=> {
+        this._toNextPage("ViewPagerAndroidDemo", ViewPagerAndroidDemo);
+    };
 
     _toNextPage = (name, component)=> {
         const {navigator} =this.props;
@@ -106,6 +122,18 @@ class WelcomeUI extends Component {
 
                     <CommonItemView itemContentText="View组件Demo"
                                     itemClickAction={this._toViewDemoPage}/>
+
+                    <CommonItemView itemContentText="DrawerLayoutAndroid组件Demo"
+                                    itemClickAction={this._toDrawerLayoutAndroidDemoPage}/>
+
+                    <CommonItemView itemContentText="Picker组件Demo"
+                                    itemClickAction={this._toPickerDemoPage}/>
+
+                    <CommonItemView itemContentText="ProgressBar组件Demo"
+                                    itemClickAction={this._toProgressBarDemoPage}/>
+
+                    <CommonItemView itemContentText="ViewPagerAndroid组件Demo"
+                                    itemClickAction={this._toViewPagerAndroidDemoPage}/>
 
                 </ScrollView>
             </View>

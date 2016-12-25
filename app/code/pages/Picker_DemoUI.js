@@ -7,15 +7,15 @@
  */
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
     Picker
 } from 'react-native';
 
+import  TitleView from "../components/TitleView.js";
 
-export default class ReactNativeLearningAndroid extends Component {
+export default class Picker_DemoUI extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -26,6 +26,9 @@ export default class ReactNativeLearningAndroid extends Component {
     render() {
         return (
             <View style={styles.page}>
+                <TitleView
+                    instance={this}
+                    title="Picker组件"/>
                 <View style={[styles.flex, styles.topState]}>
 
                     <Picker
@@ -65,5 +68,3 @@ const styles = StyleSheet.create({
         marginTop: 25,
     },
 });
-
-AppRegistry.registerComponent('ReactNativeLearningAndroid', () => ReactNativeLearningAndroid);

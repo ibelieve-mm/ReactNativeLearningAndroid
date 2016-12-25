@@ -7,15 +7,15 @@
  */
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
     DrawerLayoutAndroid
 } from 'react-native';
 
+import  TitleView from "../components/TitleView.js";
 
-export default class ReactNativeLearningAndroid extends Component {
+export default class DrawerLayoutAndroid_DemoUI extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -36,12 +36,15 @@ export default class ReactNativeLearningAndroid extends Component {
 
             <DrawerLayoutAndroid
                 drawerWidth={300}
-                drawerPosition={DrawerLayoutAndroid.positions.Left}
+                drawerPosition={DrawerLayoutAndroid.positions.Right}
                 renderNavigationView={()=>navigationView}
             >
 
 
                 <View style={styles.page}>
+                    <TitleView
+                    instance={this}
+                    title="DrawerLayoutAndroid组件"/>
                     <View style={[styles.flex, styles.topState]}>
 
                         <Text>我是主界面</Text>
@@ -73,5 +76,3 @@ const styles = StyleSheet.create({
         backgroundColor: '#AA6392'
     }
 });
-
-AppRegistry.registerComponent('ReactNativeLearningAndroid', () => ReactNativeLearningAndroid);
