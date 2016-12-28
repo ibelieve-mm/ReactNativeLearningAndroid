@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 
 import Header from'../components/HeaderView.js';//引入Header组件
-import  TitleView from "../components/TitleView.js";
+import TitleView from "../components/TitleView.js";
 
 export default class Text_DemoUI extends Component {
     render() {

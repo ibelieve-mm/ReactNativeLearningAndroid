@@ -27,6 +27,9 @@ import DrawerLayoutAndroidDemo from "./app/code/pages/DrawerLayoutAndroid_DemoUI
 import PickerDemo from "./app/code/pages/Picker_DemoUI.js";
 import ProgressBarDemo from "./app/code/pages/ProgressBar_DemoUI.js";
 import ViewPagerAndroidDemo from "./app/code/pages/ViewPagerAndroid_DemoUI.js";
+import SwiperDemo from "./app/code/pages/ReactNativeSwiper_3rdDemo.js";
+import SwiperDemo2 from "./app/code/pages/swiper/SwiperNumber/SwiperNumber.js";
+import LoadMinimalDemo from "./app/code/pages/swiper/LoadMinimal/LoadMinimalDemo.js";
 
 
 export default class ReactNativeLearningAndroid extends Component {
@@ -90,6 +93,15 @@ class WelcomeUI extends Component {
     _toViewPagerAndroidDemoPage = ()=> {
         this._toNextPage("ViewPagerAndroidDemo", ViewPagerAndroidDemo);
     };
+    _toSwiperDemoPage = ()=> {
+        this._toNextPage("SwiperDemo", SwiperDemo);
+    };
+    _toSwiperDemo2Page = ()=> {
+        this._toNextPage("SwiperDemo2", SwiperDemo2);
+    };
+    _toLoadMinimalDemoPage = ()=> {
+        this._toNextPage("LoadMinimalDemo", LoadMinimalDemo);
+    };
 
     _toNextPage = (name, component)=> {
         const {navigator} =this.props;
@@ -134,6 +146,15 @@ class WelcomeUI extends Component {
 
                     <CommonItemView itemContentText="ViewPagerAndroid组件Demo"
                                     itemClickAction={this._toViewPagerAndroidDemoPage}/>
+
+                    <CommonItemView itemContentText="第三方组件Swiper Demo"
+                                    itemClickAction={this._toSwiperDemoPage}/>
+
+                    <CommonItemView itemContentText="第三方组件Swiper Demo2"
+                                    itemClickAction={this._toSwiperDemo2Page}/>
+
+                    <CommonItemView itemContentText="第三方组件Swiper Demo3"
+                                    itemClickAction={this._toLoadMinimalDemoPage}/>
 
                 </ScrollView>
             </View>
