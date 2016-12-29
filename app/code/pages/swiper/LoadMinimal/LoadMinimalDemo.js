@@ -77,7 +77,7 @@ export default  class LoadMinimalDemo extends Component {
     render() {
         return (
             <View>
-                <Swiper loadMinimal loadMinimalSize={1} style={styles.wrapper} height={240} loop={false}>
+                <Swiper loadMinimal loadMinimalSize={2} style={styles.wrapper} height={240} loop={true} autoplay={true}>
                     {
                         this.state.imgList.map((item, i) => <Slide
                             loadHandle={this.loadHandle}

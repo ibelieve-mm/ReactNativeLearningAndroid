@@ -10,7 +10,8 @@ import {
     StyleSheet,
     Text,
     View,
-    ProgressBarAndroid
+    ProgressBarAndroid,
+    ActivityIndicator
 } from 'react-native';
 
 import  TitleView from "../components/TitleView.js";
@@ -18,8 +19,7 @@ import  TitleView from "../components/TitleView.js";
 export default class ProgressBar_DemoUI extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-        };
+        this.state = {};
     }
 
     render() {
@@ -30,7 +30,10 @@ export default class ProgressBar_DemoUI extends Component {
                     title="ProgressBar组件"/>
                 <View style={[styles.flex, styles.topState]}>
 
+                    <ActivityIndicator color="#FF639B" size="small"/>
+                    <ActivityIndicator color="#FA8919" size="large"/>
                     <ProgressBarAndroid styleAttr="Horizontal" indeterminate={false} progress={0.3}/>
+                    <ProgressBarAndroid />
                     <ProgressBarAndroid styleAttr="Small" indeterminate={false} progress={0.3}/>
                     <ProgressBarAndroid styleAttr="Large" indeterminate={false} progress={0.3}/>
                     <ProgressBarAndroid styleAttr="Inverse"/>
