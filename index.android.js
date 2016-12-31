@@ -33,6 +33,7 @@ import LoadMinimalDemo from "./app/code/pages/swiper/LoadMinimal/LoadMinimalDemo
 import AlertDemo from "./app/code/pages/Alert_DemoUI.js";
 import NetDemo from "./app/code/pages/NetWork_DemoUI.js";
 import ListViewDemo from "./app/code/pages/ListView_DemoUI.js";
+import ListViewWithSection from "./app/code/pages/ListViewWithSection_DemoUI.js";
 
 
 export default class ReactNativeLearningAndroid extends Component {
@@ -116,6 +117,10 @@ class WelcomeUI extends Component {
         this._toNextPage("ListViewDemo", ListViewDemo);
     };
 
+    _toListViewWithSectionDemoPage = ()=> {
+        this._toNextPage("ListViewWithSection", ListViewWithSection);
+    };
+
     _toNextPage = (name, component)=> {
         const {navigator} =this.props;
         if (navigator) {
@@ -177,6 +182,9 @@ class WelcomeUI extends Component {
 
                     <CommonItemView itemContentText="ListView"
                                     itemClickAction={this._toListViewDemoPage}/>
+
+                    <CommonItemView itemContentText="带有Section的ListView Demo"
+                                    itemClickAction={this._toListViewWithSectionDemoPage}/>
 
                 </ScrollView>
             </View>
