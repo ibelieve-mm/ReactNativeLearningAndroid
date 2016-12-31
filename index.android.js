@@ -31,6 +31,8 @@ import SwiperDemo from "./app/code/pages/swiper/ReactNativeSwiper_3rdDemo.js";
 import SwiperNumber from "./app/code/pages/swiper/SwiperNumber/SwiperNumber.js";
 import LoadMinimalDemo from "./app/code/pages/swiper/LoadMinimal/LoadMinimalDemo.js";
 import AlertDemo from "./app/code/pages/Alert_DemoUI.js";
+import NetDemo from "./app/code/pages/NetWork_DemoUI.js";
+import ListViewDemo from "./app/code/pages/ListView_DemoUI.js";
 
 
 export default class ReactNativeLearningAndroid extends Component {
@@ -106,6 +108,13 @@ class WelcomeUI extends Component {
     _toAlertDemoPage = ()=> {
         this._toNextPage("AlertDemo", AlertDemo);
     };
+    _toNetDemoPage = ()=> {
+        this._toNextPage("NetDemo", NetDemo);
+    };
+
+    _toListViewDemoPage = ()=> {
+        this._toNextPage("ListViewDemo", ListViewDemo);
+    };
 
     _toNextPage = (name, component)=> {
         const {navigator} =this.props;
@@ -162,6 +171,12 @@ class WelcomeUI extends Component {
 
                     <CommonItemView itemContentText="AlertDialog展示"
                                     itemClickAction={this._toAlertDemoPage}/>
+
+                    <CommonItemView itemContentText="网络请求——天气Demo"
+                                    itemClickAction={this._toNetDemoPage}/>
+
+                    <CommonItemView itemContentText="ListView"
+                                    itemClickAction={this._toListViewDemoPage}/>
 
                 </ScrollView>
             </View>
