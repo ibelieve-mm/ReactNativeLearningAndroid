@@ -34,6 +34,7 @@ import AlertDemo from "./app/code/pages/Alert_DemoUI.js";
 import NetDemo from "./app/code/pages/NetWork_DemoUI.js";
 import ListViewDemo from "./app/code/pages/ListView_DemoUI.js";
 import ListViewWithSection from "./app/code/pages/ListViewWithSection_DemoUI.js";
+import WebViewDemo from "./app/code/pages/WebView_DemoUI.js";
 
 
 export default class ReactNativeLearningAndroid extends Component {
@@ -120,6 +121,9 @@ class WelcomeUI extends Component {
     _toListViewWithSectionDemoPage = ()=> {
         this._toNextPage("ListViewWithSection", ListViewWithSection);
     };
+    _toWebViewDemoPage = ()=> {
+        this._toNextPage("WebViewDemo", WebViewDemo);
+    };
 
     _toNextPage = (name, component)=> {
         const {navigator} =this.props;
@@ -185,6 +189,9 @@ class WelcomeUI extends Component {
 
                     <CommonItemView itemContentText="带有Section的ListView Demo"
                                     itemClickAction={this._toListViewWithSectionDemoPage}/>
+
+                    <CommonItemView itemContentText="WebView Demo"
+                                    itemClickAction={this._toWebViewDemoPage}/>
 
                 </ScrollView>
             </View>
