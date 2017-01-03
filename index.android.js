@@ -35,6 +35,7 @@ import NetDemo from "./app/code/pages/NetWork_DemoUI.js";
 import ListViewDemo from "./app/code/pages/ListView_DemoUI.js";
 import ListViewWithSection from "./app/code/pages/ListViewWithSection_DemoUI.js";
 import WebViewDemo from "./app/code/pages/WebView_DemoUI.js";
+import TabNavigatorDemo from "./app/code/pages/tab-navigator/TabNavigator_DemoUI.js";
 
 
 export default class ReactNativeLearningAndroid extends Component {
@@ -124,6 +125,9 @@ class WelcomeUI extends Component {
     _toWebViewDemoPage = ()=> {
         this._toNextPage("WebViewDemo", WebViewDemo);
     };
+    _toTabNavigatorDemoPage = ()=> {
+        this._toNextPage("TabNavigatorDemo", TabNavigatorDemo);
+    };
 
     _toNextPage = (name, component)=> {
         const {navigator} =this.props;
@@ -192,6 +196,9 @@ class WelcomeUI extends Component {
 
                     <CommonItemView itemContentText="WebView Demo"
                                     itemClickAction={this._toWebViewDemoPage}/>
+
+                    <CommonItemView itemContentText="TabNavigator第三方控件Demo"
+                                    itemClickAction={this._toTabNavigatorDemoPage}/>
 
                 </ScrollView>
             </View>
