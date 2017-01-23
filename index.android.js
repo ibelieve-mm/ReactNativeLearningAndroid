@@ -73,45 +73,59 @@ class WelcomeUI extends Component {
     _toTextInputUIPage = ()=> {
         this._toNextPage("TextInputDemo", TextInputDemo);
     };
+
     _toImageUIPage = ()=> {
         this._toNextPage("ImageDemo", ImageDemo);
     };
+
     _toTouchableUIPage = ()=> {
         this._toNextPage("TouchableDemo", TouchableDemo);
     };
+
     _toBoxModelPage = ()=> {
         this._toNextPage("BoxModel", BoxModel);
     };
+
     _toTextDemoPage = ()=> {
         this._toNextPage("TextDemo", TextDemo);
     };
+
     _toViewDemoPage = ()=> {
         this._toNextPage("ViewDemo", ViewDemo);
     };
+
     _toDrawerLayoutAndroidDemoPage = ()=> {
         this._toNextPage("DrawerLayoutAndroidDemo", DrawerLayoutAndroidDemo);
     };
+
     _toPickerDemoPage = ()=> {
         this._toNextPage("PickerDemo", PickerDemo);
     };
+
     _toProgressBarDemoPage = ()=> {
         this._toNextPage("ProgressBarDemo", ProgressBarDemo);
     };
+
     _toViewPagerAndroidDemoPage = ()=> {
         this._toNextPage("ViewPagerAndroidDemo", ViewPagerAndroidDemo);
     };
+
     _toSwiperDemoPage = ()=> {
         this._toNextPage("SwiperDemo", SwiperDemo);
     };
+
     _toSwiperDemo2Page = ()=> {
         this._toNextPage("SwiperNumber", SwiperNumber);
     };
+
     _toLoadMinimalDemoPage = ()=> {
         this._toNextPage("LoadMinimalDemo", LoadMinimalDemo);
     };
+
     _toAlertDemoPage = ()=> {
         this._toNextPage("AlertDemo", AlertDemo);
     };
+
     _toNetDemoPage = ()=> {
         this._toNextPage("NetDemo", NetDemo);
     };
